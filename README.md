@@ -7,6 +7,8 @@
 
 Frontend til vores svendestykke. 
 
+https://lively-mud-03c210803.1.azurestaticapps.net
+
 Udvikler: 
 - Marc 
 - Martin
