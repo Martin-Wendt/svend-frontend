@@ -1,0 +1,34 @@
+<ion-card>
+  <div class="card_symbols">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-chip>
+            <ion-icon name="pulse-outline"></ion-icon>
+            <ion-label>{{ case.StatusName }}</ion-label>
+          </ion-chip>
+  
+          <ion-chip>
+            <ion-icon name="flag-outline"></ion-icon>
+            <ion-label>{{ (case.PriorityName == 'Unset') ? 'Ingen' : case.PriorityName }}</ion-label>
+          </ion-chip>
+  
+          <ion-chip>
+            <ion-icon name="time-outline" ></ion-icon>
+            <ion-label>{{ case.CreatedAt | date: 'dd. MMMM yyyy HH:mm':'+0100':'da-dk' }}</ion-label>
+          </ion-chip>
+  
+          <ion-chip>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-label>Oprette af <br>  {{ case.CreatedBy.name }}</ion-label>
+          </ion-chip>
+  
+          <ion-chip *ngIf="case.Assignee?.name">
+            <ion-icon name="hammer-outline"></ion-icon>
+            <ion-label>Operatør <br> {{ case.Assignee.name }}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-card>

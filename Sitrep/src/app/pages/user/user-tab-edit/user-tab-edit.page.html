@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Tilbage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Rediger Case</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <app-case-secure-icon></app-case-secure-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div padding class="spinner-center">
+    <ion-spinner name="crescent" *ngIf="!case"></ion-spinner>
+  </div>
+
+  <div *ngIf="case">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+          
+          <!-- Details for case -->
+          <app-case-details [case]="case"></app-case-details>
+
+          <!-- Edit form for case -->
+          <app-case-form [case]="case" [readOnly]="!(case.StatusId == 1)"></app-case-form>
+
+          <!-- Images for case -->
+          <app-case-pick-image [case]="case" [readOnly]="!(case.StatusId == 1)"></app-case-pick-image>
+          
+          <!-- Logs for case -->
+          <app-case-log [case]="case" [readOnly]="!(case.StatusId == 1)"></app-case-log>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

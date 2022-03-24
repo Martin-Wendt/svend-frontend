@@ -1,0 +1,48 @@
+<ion-card>
+  <ion-card-header>
+    <ion-toolbar>
+      <ion-card-title>{{ case.Title }}</ion-card-title>
+      <ion-card-subtitle color="white">Oprettet den {{ case.CreatedAt | date: 'dd. MMMM yyyy - HH:mm':'+0100':'da-dk' }}</ion-card-subtitle>
+      <ion-buttons slot="primary">
+        <ion-button fill="solid" color="secondary" [routerLink]="['/app/tabs/' + tabType + '-tab/edit', case.CaseId]">
+          <ion-icon slot="icon-only" name="chevron-forward-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-card-header>
+
+  <ion-card-content style="padding: 0px">
+    <div class="card">
+    
+      <div class="card_description">
+        <p>{{ case.Description }}</p>
+      </div>
+
+      <div class="card_symbols">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-chip>
+                <ion-icon name="images-outline"></ion-icon>
+                <ion-label>{{ case.ImageCount }}</ion-label>
+              </ion-chip>
+              <ion-chip>
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                <ion-label>{{ case.LogCount }}</ion-label>
+              </ion-chip>
+              <ion-chip>
+                <ion-icon name="pulse-outline"></ion-icon>
+                <ion-label>{{ case.StatusName }}</ion-label>
+              </ion-chip>
+              <ion-chip>
+                <ion-icon name="flag-outline"></ion-icon>
+                <ion-label>{{ (case.PriorityName == 'Unset') ? 'Ingen' : case.PriorityName }}</ion-label>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+  </ion-card-content>
+</ion-card>

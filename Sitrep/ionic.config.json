@@ -1,0 +1,7 @@
+{
+  "name": "Sitrep",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,37 @@
+<ion-card>
+  <ion-card-content style="padding: 0px">
+    <ion-grid style="padding: 0px">
+
+      <ion-row *ngIf="roles?.indexOf('Manager') != -1 && tabType == 'manager'">
+        <ion-col>
+          <ion-button fill="solid" color="secondary" expand="block" (click)="declineCase()" [disabled]="!(case.StatusId == 1)">
+            <ion-icon slot="start" name="thumbs-down-outline"></ion-icon>
+            Afvis
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button fill="solid" color="secondary" expand="block" (click)="approveCase()" [disabled]="!(case.StatusId == 1)">
+            <ion-icon slot="start" name="thumbs-up-outline"></ion-icon>
+            Godkend
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row *ngIf="roles?.indexOf('Operator') != -1 && tabType == 'operator'">
+        <ion-col>
+          <ion-button fill="solid" color="secondary" expand="block" (click)="completeCase()" [disabled]="case.StatusId != 3">
+            <ion-icon slot="start" name="trophy-outline"></ion-icon>
+            Afslut
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button fill="solid" color="secondary" expand="block" (click)="assignCase()" [disabled]="case.AssigneeId != null">
+            <ion-icon slot="start" name="build-outline"></ion-icon>
+            Tildel sag
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

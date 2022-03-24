@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Operatør liste</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <app-case-secure-icon></app-case-secure-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div padding class="spinner-center" *ngIf="!cases">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <ion-grid *ngIf="cases">
+    <ion-row class="ion-justify-content-center">
+      <ion-col>
+        <ion-item>
+          <ion-label>Filter:</ion-label>
+          <ion-select [(ngModel)]="filterDropdown" interface="popover" (ionChange)="changeFilter()" [compareWith]="compareFn">
+            <ion-select-option [value]="3">Mine tildelte sager</ion-select-option>
+            <ion-select-option [value]="2">Godkendt (alle)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-spinner name="crescent" *ngIf="dataLoading"></ion-spinner>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col *ngFor="let case of cases.value; trackBy:trackItems" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="4">
+        <app-case-list-item [case]="case" [tabType]="'operator'"></app-case-list-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Henter flere sager...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

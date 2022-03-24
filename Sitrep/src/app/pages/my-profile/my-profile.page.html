@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Min Profil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <app-case-secure-icon></app-case-secure-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="authService.user$ | async as user">
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Hej {{ user.name }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-thumbnail slot="start">
+                <img [src]="user.picture">
+              </ion-thumbnail>
+              <ion-label>
+                <h2>Navn: {{ user.name }}</h2>
+                <h2>Kaldenavn: {{ user.nickname }}</h2>
+                <h2>Email: {{ user.email }} ({{ (user.email_verified) ? 'verificeret' : 'ikke verificeret' }})</h2>
+                <h2>Sidst opdateret: {{ user.updated_at | date: 'dd. MMMM yyyy HH:mm':'+0100':'da-dk'  }}</h2>
+              </ion-label>
+            </ion-item>
+            <ion-button expand="full" (click)="logout()" color="primary">Log out</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

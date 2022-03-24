@@ -1,0 +1,25 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="user-tab">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Bruger</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="manager-tab" *ngIf="showManagerTab">
+      <ion-icon name="pencil-outline"></ion-icon>
+      <ion-label>Manager</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="operator-tab" *ngIf="showOperatorTab">
+      <ion-icon name="construct-outline"></ion-icon>
+      <ion-label>Operatør</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="my-profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Min Profil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

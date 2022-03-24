@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Tilbage"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Opret Case</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <app-case-secure-icon></app-case-secure-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+
+        <!-- Edit form for case -->
+        <app-case-form [newCaseToCreate]="true" [newCaseToCreateImageIds]="imagesIds"></app-case-form>
+
+        <!-- Images for case -->
+        <app-case-pick-image (newImagesAdded)="newImagesAdded($event)"></app-case-pick-image>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

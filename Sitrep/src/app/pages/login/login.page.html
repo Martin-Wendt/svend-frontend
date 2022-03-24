@@ -1,0 +1,10 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+    <div class="center-screen">
+        <ion-spinner name="crescent" *ngIf="!userClosedBrowser"></ion-spinner>
+        <ion-button (click)="login()" *ngIf="userClosedBrowser">Login</ion-button>
+    </div>
+</ion-content>

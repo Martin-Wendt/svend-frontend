@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-card-header style="padding: 0px 16px;">
+    <ion-toolbar>
+      <ion-card-title>Log beskeder ({{ case.LogCount }})</ion-card-title>
+      <ion-buttons slot="primary">
+        <ion-button fill="outline" color="secondary" (click)="addLogMessage()" *ngIf="!readOnly">
+          <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-label>Tilføj besked</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-card-header>
+
+  <ion-card-content style="padding: 0px">
+    <ion-accordion-group *ngIf="case?.Logs?.length">
+      <ion-accordion value="colors">
+        <ion-item slot="header">
+          <ion-label>Historik</ion-label>
+        </ion-item>
+    
+        <ion-list slot="content">  
+          <ion-item *ngFor="let log of case.Logs">
+            <ion-label class="ion-text-wrap"><b>{{ log.CreatedAt | date: 'dd-MM-yyyy hh:mm:ss' }}</b> <br/> ({{ log.CreatedBy }}) {{ log.Message }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-accordion>
+    </ion-accordion-group>
+    
+  </ion-card-content>
+</ion-card>

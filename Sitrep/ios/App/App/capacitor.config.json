@@ -1,0 +1,6 @@
+{
+	"appId": "local.mm.sitrep",
+	"appName": "Sitrep",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
